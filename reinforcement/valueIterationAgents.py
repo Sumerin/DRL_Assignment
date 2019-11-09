@@ -200,24 +200,33 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
           construction, run the indicated number of iterations,
           and then act according to the resulting policy.
         """
-        pq = []  # list of entries arranged in a heap
-        entry_finder = {}  # mapping of tasks to entries
-        REMOVED = '<removed-task>'  # placeholder for a removed task
-        counter = itertools.count()  # unique sequence count
+        self.pq = []  # list of entries arranged in a heap
+        self.entry_finder = {}  # mapping of tasks to entries
+        self.REMOVED = '<removed-task>'  # placeholder for a removed task
+        self.counter = itertools.count()  # unique sequence count
 
         self.theta = theta
         ValueIterationAgent.__init__(self, mdp, discount, iterations)
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        predecessors = util.Counter()
         states = self.mdp.getStates()
+
+        for state in states:
+            predecessors[state] = []
 
         for state in states:
             possible_actions = self.mdp.getPossibleActions(state)
             for action in possible_actions:
                 avaliable_scenario = self.mdp.getTransitionStatesAndProbs(state, action)
+                for state_prim, probability in avaliable_scenario:
+                    if probability > 0:
+                        predecessors[state_prim].append(state)
 
         for state in states:
+            if state == 'TERMINAL_STATE':
+                continue
             diff = self.find_diff(state)
             self.add_task(state, -diff)
 
@@ -237,6 +246,11 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
 
             self.values[current_state] = max(val)
 
+            for pred in predecessors[current_state]:
+                diff = self.find_diff(pred)
+                if diff > self.theta:
+                    self.add_task(pred, -diff)
+
 
     def find_diff(self, state):
         values = []
@@ -249,6 +263,8 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
     def add_task(self, task, priority=0):
         'Add a new task or update the priority of an existing task'
         if task in self.entry_finder:
+            if self.entry_finder[task][0] <= priority:
+                return
             self.remove_task(task)
         count = next(self.counter)
         entry = [priority, count, task]
