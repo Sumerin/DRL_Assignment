@@ -311,6 +311,12 @@ def getMazeGrid():
             ['S',' ',' ',' ']]
     return Gridworld(grid)
 
+def getTinyGrid():
+    grid = [[-10],
+            ['S'],
+            [10]]
+    return Gridworld(grid)
+
 
 
 def getUserAction(state, actionFunction):

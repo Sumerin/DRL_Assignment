@@ -57,7 +57,8 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.discount = discount
         self.iterations = iterations
         self.values = util.Counter() # A Counter is a dict with default 0
-        self.bestActionsQ = util.Counter()
+        self.LastValues = util.Counter() # A Counter is a dict with default 0
+        self.bestActions = util.Counter()
         self.runValueIteration()
 
     def runValueIteration(self):
@@ -67,8 +68,8 @@ class ValueIterationAgent(ValueEstimationAgent):
         Vk = []
         for i in range(0, self.iterations):
             Vk.insert(i, util.Counter())
-            bestActionsQ = util.Counter()
-
+            bestActions = util.Counter()
+            self.LastValues = self.values
             for current_state in states:
 
                 if current_state == 'TERMINAL_STATE':
@@ -78,14 +79,14 @@ class ValueIterationAgent(ValueEstimationAgent):
                 maximum_a = -math.inf
                 possible_actions = self.mdp.getPossibleActions(current_state)
                 for action in possible_actions:
-                    q = self.getQValue(current_state, action)
-                    if q > maximum_a:
-                        maximum_a = q
-                        bestActionsQ[current_state] = action
+                    value = self.computeQValueFromValues(current_state, action)
+                    if value > maximum_a:
+                        maximum_a = value
+                        bestActions[current_state] = action
 
                 Vk[i][current_state] = maximum_a
 
-            self.bestActionsQ = bestActionsQ
+            self.bestActions = bestActions
             self.values = Vk[i]
 
     def getValue(self, state):
@@ -102,12 +103,13 @@ class ValueIterationAgent(ValueEstimationAgent):
         """
         "*** YOUR CODE HERE ***"
         value = 0
-        gamma = self.discount
         avaliable_scenario = self.mdp.getTransitionStatesAndProbs(state, action)
-        for state_prim, alfa in avaliable_scenario:
-            value += alfa * (self.mdp.getReward(state, action, state_prim) + gamma * self.values[state_prim])
+        for state_prim, probability in avaliable_scenario:
+            value += probability * (
+                        self.mdp.getReward(state, action, state_prim) + self.discount * self.values[state_prim])
 
         return value
+
 
     def computeActionFromValues(self, state):
         """
@@ -122,7 +124,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         if self.mdp.isTerminal(state):
             return None
 
-        return self.bestActionsQ[state]
+        return self.bestActions[state]
 
 
     def getPolicy(self, state):
