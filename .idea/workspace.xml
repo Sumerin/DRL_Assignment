@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2861dcee-920d-4010-8926-c298aa0bcf0e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reinforcement/gridworld.py" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/gridworld.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reinforcement/reinforcementTestClasses.py" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/reinforcementTestClasses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q1/1-tinygrid.solution" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/test_cases/q1/1-tinygrid.solution" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q1/4-discountgrid.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q4/1-tinygrid.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q4/2-tinygrid-noisy.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q4/3-bridge.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q4/4-discountgrid.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q5/1-tinygrid.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/test_cases/q5/1-tinygrid.test_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q5/2-tinygrid-noisy.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/test_cases/q5/2-tinygrid-noisy.test_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q5/3-bridge.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/test_cases/q5/3-bridge.test_output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reinforcement/test_cases/q5/4-discountgrid.test_output" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/test_cases/q5/4-discountgrid.test_output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reinforcement/valueIterationAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/reinforcement/valueIterationAgents.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +21,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/DRL$autograder.coverage" NAME="autograder Coverage Results" MODIFIED="1573312757585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/reinforcement" />
-    <SUITE FILE_PATH="coverage/DRL$gridworld.coverage" NAME="gridworld Coverage Results" MODIFIED="1573311965074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/reinforcement" />
+    <SUITE FILE_PATH="coverage/DRL$gridworld.coverage" NAME="gridworld Coverage Results" MODIFIED="1573322937950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/reinforcement" />
   </component>
   <component name="DockManager">
     <window id="1">
@@ -37,12 +41,29 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reinforcement/valueIterationAgents.py">
+        <entry file="file://$PROJECT_DIR$/reinforcement/gridworld.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="110" selection-start-line="110" selection-end-line="110" />
+            <state relative-caret-position="150">
+              <caret line="393" column="4" selection-start-line="393" selection-start-column="4" selection-end-line="393" selection-end-column="4" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/reinforcement/valueIterationAgents.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="217" column="37" selection-start-line="217" selection-start-column="37" selection-end-line="217" selection-end-column="37" />
+              <folding>
+                <element signature="e#1356#1378#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q4/2-tinygrid-noisy.test">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -57,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reinforcement/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="751">
+              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -85,15 +106,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reinforcement/testClasses.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q1/1-tinygrid.test">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
@@ -103,28 +115,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q1/2-tinygrid-noisy.solution">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="380" column="18" lean-forward="true" selection-start-line="380" selection-start-column="18" selection-end-line="380" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q1/1-tinygrid.solution">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret lean-forward="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reinforcement/grading.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="79" selection-start-line="79" selection-end-line="79" />
             </state>
           </provider>
         </entry>
@@ -137,11 +131,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/reinforcement/analysis.py" />
         <option value="$PROJECT_DIR$/reinforcement/gridworld.py" />
-        <option value="$PROJECT_DIR$/reinforcement/valueIterationAgents.py" />
         <option value="$PROJECT_DIR$/reinforcement/reinforcementTestClasses.py" />
         <option value="$PROJECT_DIR$/reinforcement/test_cases/q1/1-tinygrid.solution" />
+        <option value="$PROJECT_DIR$/reinforcement/analysis.py" />
+        <option value="$PROJECT_DIR$/reinforcement/valueIterationAgents.py" />
       </list>
     </option>
   </component>
@@ -182,6 +176,13 @@
               <item name="test_cases" type="462c0819:PsiDirectoryNode" />
               <item name="q1" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DRL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DRL" type="462c0819:PsiDirectoryNode" />
+              <item name="reinforcement" type="462c0819:PsiDirectoryNode" />
+              <item name="test_cases" type="462c0819:PsiDirectoryNode" />
+              <item name="q4" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -207,7 +208,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.autograder">
+  <component name="RunManager" selected="Python.gridworld">
     <configuration name="autograder" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DRL" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -244,7 +245,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reinforcement/gridworld.py" />
-      <option name="PARAMETERS" value="-a value -i 100 -g NewDiscountGrid --discount 0.9 --noise 0.2" />
+      <option name="PARAMETERS" value="-g TinyGrid -a asynchvalue -i 3 --discount 0.75  --noise 0.25" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -258,8 +259,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.autograder" />
         <item itemvalue="Python.gridworld" />
+        <item itemvalue="Python.autograder" />
       </list>
     </recent_temporary>
   </component>
@@ -274,24 +275,24 @@
       <option name="presentableId" value="Default" />
       <updated>1573296124483</updated>
       <workItem from="1573296135237" duration="11200000" />
-      <workItem from="1573310983037" duration="1942000" />
+      <workItem from="1573310983037" duration="8329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13142000" />
+    <option name="totallyTimeSpent" value="19529000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948583" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.5152151" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5152151" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -299,7 +300,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33053514" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33053514" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -333,6 +334,11 @@
           <url>file://$PROJECT_DIR$/reinforcement/reinforcementTestClasses.py</url>
           <line>75</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reinforcement/valueIterationAgents.py</url>
+          <line>170</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -390,22 +396,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reinforcement/gridworld.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="546" selection-start-line="546" selection-end-line="546" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q2/1-bridge-grid.solution">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reinforcement/analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reinforcement/grading.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -438,17 +430,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reinforcement/valueIterationAgents.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reinforcement/reinforcementTestClasses.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="76" column="36" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q1/1-tinygrid.solution">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reinforcement/analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="751">
+          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reinforcement/gridworld.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="393" column="4" selection-start-line="393" selection-start-column="4" selection-end-line="393" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -459,10 +465,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q1/1-tinygrid.solution">
+    <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q4/2-tinygrid-noisy.test">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reinforcement/test_cases/q4/2-tinygrid-noisy.test_output">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="-1710" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reinforcement/valueIterationAgents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="217" column="37" selection-start-line="217" selection-start-column="37" selection-end-line="217" selection-end-column="37" />
+          <folding>
+            <element signature="e#1356#1378#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

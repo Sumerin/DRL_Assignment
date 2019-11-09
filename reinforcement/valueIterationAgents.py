@@ -26,7 +26,7 @@
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 
-import mdp, util, math
+import mdp, util, math,heapq, itertools
 
 from learningAgents import ValueEstimationAgent
 import collections
@@ -68,25 +68,19 @@ class ValueIterationAgent(ValueEstimationAgent):
         Vk = []
         for i in range(0, self.iterations):
             Vk.insert(i, util.Counter())
-            bestActions = util.Counter()
-            self.LastValues = self.values
             for current_state in states:
 
                 if current_state == 'TERMINAL_STATE':
                     Vk[i][current_state] = 0
                     continue
 
-                maximum_a = -math.inf
+                val = []
                 possible_actions = self.mdp.getPossibleActions(current_state)
                 for action in possible_actions:
-                    value = self.computeQValueFromValues(current_state, action)
-                    if value > maximum_a:
-                        maximum_a = value
-                        bestActions[current_state] = action
+                    val.append(self.computeQValueFromValues(current_state, action))
 
-                Vk[i][current_state] = maximum_a
+                Vk[i][current_state] = max(val)
 
-            self.bestActions = bestActions
             self.values = Vk[i]
 
     def getValue(self, state):
@@ -174,6 +168,23 @@ class AsynchronousValueIterationAgent(ValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        states = self.mdp.getStates()
+
+        for i in range(0, self.iterations):
+
+            idx = i % len(states)
+            current_state = states[idx]
+
+            if current_state == 'TERMINAL_STATE':
+                self.values[current_state] = 0
+                continue
+
+            val = []
+            possible_actions = self.mdp.getPossibleActions(current_state)
+            for action in possible_actions:
+                val.append(self.computeQValueFromValues(current_state, action))
+
+            self.values[current_state] = max(val)
 
 class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
     """
@@ -189,9 +200,73 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
           construction, run the indicated number of iterations,
           and then act according to the resulting policy.
         """
+        pq = []  # list of entries arranged in a heap
+        entry_finder = {}  # mapping of tasks to entries
+        REMOVED = '<removed-task>'  # placeholder for a removed task
+        counter = itertools.count()  # unique sequence count
+
         self.theta = theta
         ValueIterationAgent.__init__(self, mdp, discount, iterations)
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
+        states = self.mdp.getStates()
+
+        for state in states:
+            possible_actions = self.mdp.getPossibleActions(state)
+            for action in possible_actions:
+                avaliable_scenario = self.mdp.getTransitionStatesAndProbs(state, action)
+
+        for state in states:
+            diff = self.find_diff(state)
+            self.add_task(state, -diff)
+
+        for i in range(0, self.iterations):
+            current_state = self.pop_task()
+            if current_state == 'empty':
+                break
+
+            if current_state == 'TERMINAL_STATE':
+                #self.values[current_state] = 0
+                continue
+
+            val = []
+            possible_actions = self.mdp.getPossibleActions(current_state)
+            for action in possible_actions:
+                val.append(self.computeQValueFromValues(current_state, action))
+
+            self.values[current_state] = max(val)
+
+
+    def find_diff(self, state):
+        values = []
+        actions = self.mdp.getPossibleActions(state)
+        for action in actions:
+            q = self.computeQValueFromValues(state, action)
+            values.append(q)
+        return abs(self.values[state] - max(values))
+
+    def add_task(self, task, priority=0):
+        'Add a new task or update the priority of an existing task'
+        if task in self.entry_finder:
+            self.remove_task(task)
+        count = next(self.counter)
+        entry = [priority, count, task]
+        self.entry_finder[task] = entry
+        heapq.heappush(self.pq, entry)
+
+    def remove_task(self, task):
+        'Mark an existing task as REMOVED.  Raise KeyError if not found.'
+        entry = self.entry_finder.pop(task)
+        entry[-1] = self.REMOVED
+
+    def pop_task(self):
+        'Remove and return the lowest priority task. Raise KeyError if empty.'
+        while self.pq:
+            priority, count, task = heapq.heappop(self.pq)
+            if task is not self.REMOVED:
+                del self.entry_finder[task]
+                return task
+        return 'empty'
+
 
