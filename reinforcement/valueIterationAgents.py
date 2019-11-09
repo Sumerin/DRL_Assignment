@@ -123,8 +123,16 @@ class ValueIterationAgent(ValueEstimationAgent):
         "*** YOUR CODE HERE ***"
         if self.mdp.isTerminal(state):
             return None
+        actions = self.mdp.getPossibleActions(state)
 
-        return self.bestActions[state]
+        values = []
+        for action in actions:
+            q = self.computeQValueFromValues(state, action)
+            values.append(q)
+
+        maximum = max(values)
+        maxIdx = values.index(maximum)
+        return actions[maxIdx]
 
 
     def getPolicy(self, state):

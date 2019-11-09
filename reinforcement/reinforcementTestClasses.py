@@ -74,7 +74,8 @@ class ValueIterationTest(testClasses.TestCase):
         stdOutString = ''
         fileOutString = ''
         valuesKey = "values_k_%d" % n
-        if self.comparePrettyValues(valuesPretty, solutionDict[valuesKey]):
+        sol = solutionDict[valuesKey]
+        if self.comparePrettyValues(valuesPretty, sol):
             fileOutString += "Values at iteration %d are correct.\n" % n
             fileOutString += "   Student/correct solution:\n %s\n" % self.prettyValueSolutionString(valuesKey, valuesPretty)
         else:

@@ -317,6 +317,14 @@ def getTinyGrid():
             [10]]
     return Gridworld(grid)
 
+def getNewDiscountGrid():
+    grid = [[-10, ' ', 10, ' ', ' '],
+            [-10, ' ', '#', ' ', ' '],
+            [-10, ' ', 1, ' ', ' '],
+            [-10, ' ', '#', '#', ' '],
+            [-10, 'S', ' ', ' ', ' ']]
+    return Gridworld(grid)
+
 
 
 def getUserAction(state, actionFunction):
