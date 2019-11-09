@@ -26,7 +26,7 @@
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 
-import mdp, util
+import mdp, util, math
 
 from learningAgents import ValueEstimationAgent
 import collections
@@ -57,12 +57,36 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.discount = discount
         self.iterations = iterations
         self.values = util.Counter() # A Counter is a dict with default 0
+        self.bestActionsQ = util.Counter()
         self.runValueIteration()
 
     def runValueIteration(self):
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
+        states = self.mdp.getStates()
+        Vk = []
+        for i in range(0, self.iterations):
+            Vk.insert(i, util.Counter())
+            bestActionsQ = util.Counter()
 
+            for current_state in states:
+
+                if current_state == 'TERMINAL_STATE':
+                    Vk[i][current_state] = 0
+                    continue
+
+                maximum_a = -math.inf
+                possible_actions = self.mdp.getPossibleActions(current_state)
+                for action in possible_actions:
+                    q = self.getQValue(current_state, action)
+                    if q > maximum_a:
+                        maximum_a = q
+                        bestActionsQ[current_state] = action
+
+                Vk[i][current_state] = maximum_a
+
+            self.bestActionsQ = bestActionsQ
+            self.values = Vk[i]
 
     def getValue(self, state):
         """
@@ -77,7 +101,13 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        value = 0
+        gamma = self.discount
+        avaliable_scenario = self.mdp.getTransitionStatesAndProbs(state, action)
+        for state_prim, alfa in avaliable_scenario:
+            value += alfa * (self.mdp.getReward(state, action, state_prim) + gamma * self.values[state_prim])
+
+        return value
 
     def computeActionFromValues(self, state):
         """
@@ -89,7 +119,11 @@ class ValueIterationAgent(ValueEstimationAgent):
           terminal state, you should return None.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        if self.mdp.isTerminal(state):
+            return None
+
+        return self.bestActionsQ[state]
+
 
     def getPolicy(self, state):
         return self.computeActionFromValues(state)
